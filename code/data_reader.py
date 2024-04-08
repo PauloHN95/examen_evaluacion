@@ -10,3 +10,16 @@ def leer_datos(filepath):
     df = pd.read_csv(filepath)
     df['TS'] = pd.to_datetime(df['TS'])
     return df 
+
+def filtrar_calcular_media(df,tag):
+    """
+    funcion llamada filtrar_calcular_media que filtre los datos de la columna Tag para tu nombre Examen_NOMBRE_ALUMNO
+    y calcula la media de la columna value.
+    df: DataFrame que contiene los datos.
+    tag: Tag específico por el cual filtrar los datos.
+    df_tag_alumno: se crea un df nuevo que solo contiene los datos del alumno seleccionado
+    media: calcula la media de la columna 'Value' del dataframe df_tag_alumno .
+    """
+    df_tag_alumno = df[df['Tag'] == tag]
+    media = df_tag_alumno['Value'].mean()
+    return media
